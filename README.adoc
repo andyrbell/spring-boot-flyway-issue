@@ -1,0 +1,10 @@
+= Spring Boot Flyway Auto Configuration Issue
+
+As described in https://github.com/flyway/flyway/issues/1982[this issue], Spring Boot throws an IllegalStateException if a filesystem: location is used:
+
+    Caused by: java.lang.IllegalStateException: Cannot find migrations location in: [filesystem:src/main/resources/db/migration] (please add migrations or check your Flyway configuration)
+
+As a workaround, the location check can be disabled:
+
+    spring.flyway.check-location=false # spring boot 2.0.x
+    flyway.check-location=false        # spring boot 1.5.x
